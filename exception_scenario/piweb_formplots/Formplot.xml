@@ -1,0 +1,2380 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Zeiss.PiWeb.Formplot</name>
+    </assembly>
+    <members>
+        <member name="T:Zeiss.PiWeb.Formplot.Common.DoubleCompareExtensions">
+             <summary>
+             Class containing helper methods for comparing doubles.
+             (see https://msdn.microsoft.com/en-us/library/ya2zha7s(v=vs.110).aspx, Technique 1).
+            
+             Comparing Nullables is done like in .NET Framework:
+             https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/nullable-types/using-nullable-types
+            
+             Comparing nullables returns:
+            
+             double? num1 = 10;
+             double? num2 = null;
+             double? num3 = null;
+            
+             num1 == num2 = False
+             num1 != num2 = True
+             num1 >  num2 = False
+             num1 >= num2 = False
+             num1 &lt;  num2 = False
+             num1 &lt;= num2 = False
+            
+             num3 == num2 = True
+             num3 != num2 = False
+             num3 >  num2 = False
+             num3 >= num2 = False
+             num3 &lt;  num2 = False
+             num3 &lt;= num2 = False
+             </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.Common.DoubleCompareExtensions.IsCloseTo(System.Double,System.Double,System.Double)">
+            <summary>
+            Checks if the given doubles can be considered "equal" under the given tolerance.
+            </summary>
+            <param name="x">First value.</param>
+            <param name="y">Second value.</param>
+            <param name="tolerance">Equality tolerance.</param>
+            <returns>
+            True if the distance between both values is smaller than the given tolerance. Otherwise false.
+            </returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.Common.DoubleCompareExtensions.IsCloseTo(System.Nullable{System.Double},System.Nullable{System.Double},System.Double)">
+            <summary>
+            Checks if the given doubles can be considered "equal" under the given tolerance.
+            </summary>
+            <param name="x">First value.</param>
+            <param name="y">Second value.</param>
+            <param name="tolerance">Equality tolerance.</param>
+            <returns>
+            True if both are null or the distance between them is smaller than the given tolerance. Otherwise false.
+            </returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.Common.EnumerableExtensions.FilterNull``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Removes all null values from a given <see cref="T:System.Collections.Generic.IEnumerable`1"/>.
+            </summary>
+            <param name="items">Will be filtered.</param>
+            <typeparam name="T">Type of the contained items.</typeparam>
+            <returns>An enumerable containing all non-null items.</returns>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.Common.EnumParser`1">
+            <summary>
+            Responsible for parsing enums.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.Common.EnumParser`1.Parse(System.String)">
+            <summary>
+            Equivalent to <see cref="M:System.Enum.Parse(System.Type,System.String)"/>.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.Common.EnumParser`1.TryParse(System.String,`0@)">
+            <summary>
+            Equivalent to <see cref="M:System.Enum.TryParse``1(System.String,System.Boolean,``0@)"/>.
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.BorePatternPlot">
+            <summary>
+            Shows points on a plane, which have a planar deviation in a certain direction.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.BorePatternPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry">
+            <summary>
+            Describes a circle geometry
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry.Radius">
+            <summary>
+            Gets or sets the radius.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleGeometry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry">
+            <summary>
+            Represents a "circle in contour" geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.Radius">
+            <summary>
+            Gets or sets the radius.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.MaxGapPoint">
+            <summary>
+            The point with the largest gap.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.FirstTouchingPoint">
+            <summary>
+            Representation of the first point of contact as <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.CirclePoint"/>.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.SecondTouchingPoint">
+            <summary>
+            Representation of the second point of contact as <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.CirclePoint"/>.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfileGeometry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfilePlot">
+            <summary>
+            Shows a circle, which has been fitted into a measured geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfilePlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfilePoint">
+            <summary>
+            Describes a point in a circle
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfilePoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CircleInProfilePoint.#ctor(System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="angle">The angle.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CirclePoint">
+            <summary>
+            Describes a point in a circle
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CirclePoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CirclePoint.#ctor(System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="angle">The angle.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2">
+            <summary>
+            Describes a point in a circle
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2.#ctor(System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="angle">The angle.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2.Angle">
+            <summary>
+            Gets or sets the angle.
+            </summary>
+            <value>
+            The angle.
+            </value>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2.Deviation">
+            <summary>
+            Gets or sets the deviation of this point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CirclePointBase`2.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem">
+            <summary>
+            Describes a coordinate system, composed of a position vector and 3 direction vectors.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.Origin">
+            <summary>
+            Gets or sets the position vector.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.Axis1">
+            <summary>
+            Gets or sets the first direction vector.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.Axis2">
+            <summary>
+            Gets or sets the second direction vector.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.Axis3">
+            <summary>
+            Gets or sets the third direction vector.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc cref="M:System.Xml.Serialization.IXmlSerializable.WriteXml(System.Xml.XmlWriter)" />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.Deserialize(System.Xml.XmlReader)">
+            <inheritdoc cref="M:System.Xml.Serialization.IXmlSerializable.ReadXml(System.Xml.XmlReader)" />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CoordinateSystem.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurveDistanceGeometry">
+            <summary>
+            Representation of a curve distance geometry.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistanceGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePlot">
+            <summary>
+            A plot representing a curve distance.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint">
+            <summary>
+            Represents a CurveDistance point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,System.Double,Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="firstPosition">The nominal position of the first point.</param>
+            <param name="firstDirection">The direction of the first point.</param>
+            <param name="firstDeviation">The deviation of the first point.</param>
+            <param name="secondPosition">The nominal position of the second point.</param>
+            <param name="secondDirection">The direction of the second point.</param>
+            <param name="secondDeviation">The deviation position of the second point.</param>
+            <param name="distance">The calculated distance between the actual points.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.FirstPosition">
+            <summary>
+            The nominal position of the first point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.FirstDirection">
+            <summary>
+            The direction of the first point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.FirstDeviation">
+            <summary>
+            The deviation of the first point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.SecondPosition">
+            <summary>
+            The nominal position of the second point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.SecondDirection">
+            <summary>
+            The direction of the second point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.SecondDeviation">
+            <summary>
+            The deviation position of the second point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.Distance">
+            <summary>
+            The calculated distance between the actual points.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurveDistancePoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurveGeometry">
+            <summary>
+            Representation of a curve geometry.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurveGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurvePoint">
+            <summary>
+            Represents a curve point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurvePoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurvePoint.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="direction">The direction.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2">
+            <summary>
+            Represents a curve point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="direction">The direction.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>
+            The position.
+            </value>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.Direction">
+            <summary>
+            Gets or sets the direction.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.Deviation">
+            <summary>
+            Gets or sets the deviation of this point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurvePointBase`2.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CurveProfilePlot">
+            <summary>
+            A plot representing a curve profile.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CurveProfilePlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry">
+            <summary>
+            Represents a cylinder geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry.Radius">
+            <summary>
+            Gets or sets the radius.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry.Height">
+            <summary>
+            Gets or sets the height.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint">
+            <summary>
+            Represents a cylinder point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.#ctor(System.Double,System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="angle">The angle.</param>
+            <param name="height">The height.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.Angle">
+            <summary>
+            Gets or sets the angle in radians.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.Height">
+            <summary>
+            Gets or sets the height.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.Deviation">
+            <summary>
+            Gets or sets the deviation of this point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylinderPoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.CylindricityPlot">
+            <summary>
+            Shows deviations from a nominal cylinder or a cylinder axis
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.CylindricityPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.DataTypeId">
+            <summary>
+            Determines the datatype of a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance an.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DataTypeId.Integer">
+            <summary>
+            Natural number
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DataTypeId.Double">
+            <summary>
+            Floating point number
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DataTypeId.String">
+            <summary>
+            String
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DataTypeId.DateTime">
+            <summary>
+            Timestamp
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DataTypeId.TimeSpan">
+            <summary>
+            Timespan
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Defect">
+            <summary>
+            An item of the defect plot.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Defect.#ctor">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Defect.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Voxel[])">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="size">The size.</param>
+            <param name="voxels">The voxels.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Defect.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Mesh)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="size">The size.</param>
+            <param name="shape">The mesh that describes the defects shape.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Defect.Position">
+            <summary>
+            Gets the position.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Defect.Size">
+            <summary>
+            Gets the size.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Defect.Voxels">
+            <summary>
+            Gets the voxel shape.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Defect.Shape">
+            <summary>
+            Gets the mesh shape.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Defect.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Defect.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry">
+            <summary>
+            Represents a defect geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry.Size">
+            <summary>
+            Gets or sets the reference size.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry.VoxelSize">
+            <summary>
+            Gets or sets the size of a single voxel.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.DefectGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.DefectPlot">
+            <summary>
+            Contains defects.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.DefectPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.DeviationTypes">
+            <summary>
+            Determines what kind of deviation is stored.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DeviationTypes.None">
+            <summary>
+            Length in mm.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DeviationTypes.Length">
+            <summary>
+            Length in mm.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.DeviationTypes.Angle">
+            <summary>
+            Angle in degrees.
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.EmptyGeometry">
+            <summary>
+            Empty geometry used for property plot.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.EmptyGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.EmptyPlot">
+            <summary>
+            A plot which is only used to manage properties.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.EmptyPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.EmptyPoint">
+            <summary>
+            Point that is used as a dummy for the <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.EmptyPlot"/>.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.EmptyPoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.EmptyPoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FilletCircle">
+            <summary>
+            Represents the circle of a fillet plot, which consists of a radius and a FilletPoint.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FilletCircle.#ctor(System.Double,Zeiss.PiWeb.Formplot.FileFormat.FilletPoint)">
+            <summary>Constructor.</summary>
+            <param name="radius">The radius.</param>
+            <param name="center">The center point of circle.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FilletCircle.Radius">
+            <summary>
+            Radius of FilletCircle.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FilletCircle.Center">
+            <summary>
+            Center point of FilletCircle.
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry">
+            <summary>
+            Contains the Fillet entry- and exit points as well as the gap points of two Fillets.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry.Circle">
+            <summary>
+            Gets or sets the inlet point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry.Inlet">
+            <summary>
+            Gets or sets the inlet point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry.Outlet">
+            <summary>
+            Gets or sets the outlet point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FilletGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FilletPlot">
+            <summary>
+            Similar to a flush and gap plot, but without reference and measure profile and an additional circle.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FilletPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FilletPoint">
+            <summary>
+            Represents a curve point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FilletPoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FilletPoint.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="direction">The direction.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FlatnessPlot">
+            <summary>
+            Shows points on a plane, which have a deviation orthogonal to the plane.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlatnessPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FlushPointConnectionType">
+            <summary>
+            Determines how the inner flush point connects to the tangent of the outer flush point.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FlushPointConnectionType.Orthogonal">
+            <summary>
+            Connects the inner flush point with an orthogonal line to the tangent of the outer flush point.
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry">
+            <summary>
+            Contains the curve entry- and exit points as well as the gap points of two curves.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.ReferenceProfile">
+            <summary>
+            Get or set the reference profile for geometry of Flush- and Gap plot
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.MeasureProfile">
+            <summary>
+            Get or set the measure profile  for geometry of Flush- and Gap plot
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.FlushValue">
+            <summary>
+            Get or set the value for the Flush of Flush- and Gap plot
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.FlushConnectionType">
+            <summary>
+            Get or set the type of connection between the Flush points of reference and measure profile
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.GapValue">
+            <summary>
+            Get or set the value for the Gap of Flush- and Gap plot
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.GapConnectionType">
+            <summary>
+            Get or set the type of connection between the Gap points of reference and measure profile
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FlushGapPlot">
+            <summary>
+            Similar to a curve plot, but with additional geometry features.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FlushGapPoint">
+            <summary>
+            Represents a flash gap point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapPoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapPoint.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="direction">The direction.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile">
+            <summary>
+            Holds Information about the profiles in Flush-Gap plot.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile.Inlet">
+            <summary>
+            Gets or sets the inlet point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile.Outlet">
+            <summary>
+            Gets or sets the outlet point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile.Flush">
+            <summary>
+            Gets or sets the flush point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile.Gap">
+            <summary>
+            Gets or sets the gap point.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Writes the geometry information to the specified <see cref="T:System.Xml.XmlWriter" />.
+            </summary>
+            <param name="writer">The writer.</param>
+            <exception cref="T:System.ArgumentNullException">writer</exception>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FlushGapProfile.Deserialize(System.Xml.XmlReader)">
+            <summary>
+            Reads the geometry information to the specified <see cref="T:System.Xml.XmlWriter" />.
+            </summary>
+            <param name="reader"></param>
+            <returns>FlushGapProfile</returns>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Formplot">
+            <summary>
+            Base class for all kinds of form plots.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot.#ctor(Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes)">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.FormplotType">
+            <summary>
+            Gets the type of the formplot.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.GeometryType">
+            <summary>
+            Gets the type of the geometry.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.OriginalFormplotType">
+            <summary>
+            Gets the type of plot from which this plot has been converted.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.CreatorSoftware">
+            <summary>
+            Gets or sets the name of the software, which has written the formplot data.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.CreatorSoftwareVersion">
+            <summary>
+            Gets or sets the version of the software, which has written the formplot data.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.Properties">
+            <summary>
+            Gets the metadata.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.Tolerance">
+            <summary>
+            Gets or sets the global tolerance.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.DefaultErrorScaling">
+            <summary>
+            Gets or sets the default error scaling.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.PreserveAspectRatio">
+            <summary>
+            Gets or sets the default error scaling.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.ProjectionAxis">
+            <summary>
+            Gets or sets the projection axis.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.Segments">
+            <summary>
+            The list of segments of which this plot is composed.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.Actual">
+            <summary>
+            Gets the actual geometry.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot.Nominal">
+            <summary>
+            Gets the nominal geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot.WriteTo(System.IO.Stream)">
+            <summary>
+            Writes the formplot file content to the specified stream.
+            </summary>
+            <param name="stream">The stream.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot.Clone">
+            <summary>
+            Creates a clone of this form plot.
+            </summary>
+            <remarks>The clone is created by serilizing and deserializing the current plot.</remarks>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot.ReadFrom(System.IO.Stream,Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes[])">
+            <summary>
+            Reads a formplot from the specified stream.
+            </summary>
+            <param name="stream"></param>
+            <param name="acceptedTypes">Types that should be processed further. Leave null to allow all types.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot.ReadFrom``1(System.IO.Stream,System.Boolean)">
+            <summary>
+            Reads a formplot of a certain type from the specified stream.
+            </summary>
+            <param name="stream"></param>
+            <param name="allowConversion"></param>
+            <typeparam name="TPlot">The desired formplot type</typeparam>
+            <returns>An instance of the desired formplot type or null.</returns>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2">
+            <summary>
+            Representation of a formplot.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.#ctor(Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes)">
+            <summary>Constructor.</summary>
+            <param name="formplotType">Type of the formplot.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.Segments">
+            <summary>
+            The list of segments of which this plot is composed.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.Points">
+            <summary>
+            Gets or sets the plot points.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.Nominal">
+            <summary>
+            Gets or sets the nominal geometry.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.Actual">
+            <summary>
+            Gets or sets the actual geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.WriteTo(System.IO.Stream)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Formplot`2.Clone">
+            <summary>
+            Creates a clone of this form plot.
+            </summary>
+            <remarks>The clone is created by serilizing and deserializing the current plot.</remarks>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FormplotConverter">
+            <summary>
+            Can be used to convert a formplot to a distinct type.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotConverter.TryConvert``1(Zeiss.PiWeb.Formplot.FileFormat.Formplot,``0@)">
+            <summary>
+            Converts the specified source plot to the target type.
+            </summary>
+            <param name="source">Source plot</param>
+            <param name="target">Target plot</param>
+            <typeparam name="TPlot">Target plot type</typeparam>
+            <returns><c>true</c> if the conversion was successful, otherwise <c>false</c></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.#ctor(System.Byte[],System.Int32)">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.CanRead">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.CanSeek">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.CanWrite">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Length">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Position">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Dispose(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Flush">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Read(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Seek(System.Int64,System.IO.SeekOrigin)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.SetLength(System.Int64)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotHelper.ArrayPoolStream.Write(System.Byte[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes">
+            <summary>
+            Formplot types
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.None">
+            <summary>
+            No specific formplot type. The instance only keeps metadata.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Roundness">
+            <summary>
+            Roundness
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Flatness">
+            <summary>
+            Flatness
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.CurveProfile">
+            <summary>
+            Curve profile
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Straightness">
+            <summary>
+            Straightness
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Cylindricity">
+            <summary>
+            Cylindricity
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Pitch">
+            <summary>
+            Pitch
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.BorePattern">
+            <summary>
+            BorePattern
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.CircleInProfile">
+            <summary>
+            CircleInProfile
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Fourier">
+            <summary>
+            Fourier
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.FlushGap">
+            <summary>
+            Flush and Gap plot
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Fillet">
+            <summary>
+            Fillet plot
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.Defect">
+            <summary>
+            Defect plot data
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.FormplotTypes.CurveDistance">
+            <summary>
+            Curve distance plot
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FormplotWriter">
+            <summary>
+            Extension class to provide serialization of form plots.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotWriter.WriteTo``2(Zeiss.PiWeb.Formplot.FileFormat.Formplot{``0,``1},System.IO.Stream)">
+            <summary>
+            Writes the data of the plot into the specified <paramref name="stream"/>.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotWriter.Serialize``2(Zeiss.PiWeb.Formplot.FileFormat.Formplot{``0,``1},System.Xml.XmlWriter,System.IO.Stream)">
+            <summary>
+            Serializes the formplot. The header information is written to the <paramref name="metaDataWriter" />, whereas the points are stored as a
+            blob in the <paramref name="pointDataStream" /></summary>
+            <param name="plot">The plot.</param>
+            <param name="metaDataWriter">An XML writer to store the header data, such as tolerances and segments.</param>
+            <param name="pointDataStream">A stream to store the binary point data.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FormplotWriter.WritePoints``2(Zeiss.PiWeb.Formplot.FileFormat.Formplot{``0,``1},System.Xml.XmlWriter,System.IO.Stream)">
+            <summary>
+            Writes the points into the specified <see cref="T:System.IO.Stream" /> and writes their metadata with the specified <see cref="T:System.Xml.XmlWriter" />.
+            </summary>
+            <param name="plot">The plot.</param>
+            <param name="writer">The xml writer.</param>
+            <param name="pointDataStream">The point data stream.</param>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FourierPlot">
+            <summary>
+            Shows the deviation (amplitude) per harmonic => a.k.a. Fourier plot
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FourierPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint">
+            <summary>
+            Represents a point of a Fourier plot
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint.#ctor(System.UInt32,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="harmonic">The harmonic of fundamental frequency.</param>
+            <param name="amplitude">The amplitude.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint.Harmonic">
+            <summary>
+            Gets or sets the harmonic of fundamental frequency.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint.Amplitude">
+            <summary>
+            Gets or sets the deviation in mm.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.FourierPoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Geometry">
+            <summary>
+            Base class for geometry descriptions.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Geometry.CoordinateSystem">
+            <summary>
+            Gets or sets the <see cref="P:Zeiss.PiWeb.Formplot.FileFormat.Geometry.CoordinateSystem"/> of the geometry.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Geometry.GeometryType">
+            <summary>
+            Gets the type of this geometry
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Geometry.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Writes the geometry information to the specified <see cref="T:System.Xml.XmlWriter"/>.
+            </summary>
+            <param name="writer">The writer.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Geometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <summary>
+            Reads the information from the current item of the specified <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="version">The version of the formplot file.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Geometry.Deserialize(System.Xml.XmlReader,System.Version)">
+            <summary>
+            Reads the geometry information from the specified <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            <param name="reader">The reader.</param>
+            <param name="version">The version of the formplot file.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Geometry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes">
+            <summary>
+            Geometry types
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.None">
+            <summary>
+            No geometry
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Circle">
+            <summary>
+            Circle
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Plane">
+            <summary>
+            Plane
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Curve">
+            <summary>
+            Curve
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Line">
+            <summary>
+            Line
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Cylinder">
+            <summary>
+            Cylinder
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.CircleInProfile">
+            <summary>
+            Circle in a profile
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.FlushGap">
+            <summary>
+            Flush and Gap
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Defect">
+            <summary>
+            Defect
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Fillet">
+            <summary>
+            Fillet
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.Pitch">
+            <summary>
+            Pitch
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.GeometryTypes.CurveDistance">
+            <summary>
+            Curve distance
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry">
+            <summary>
+            Represents a line geometry
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.Position">
+            <summary>
+            Gets the position vector where the line starts.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.Direction">
+            <summary>
+            Gets the direction vector.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.Deviation">
+            <summary>
+            Gets the direction vector of the deviation. (Normal direction, probing direction)
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.Length">
+            <summary>
+            Gets the length of the line in millimeters.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LineGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.LinePoint">
+            <summary>
+            Represents a point of a line
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LinePoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LinePoint.#ctor(System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LinePoint.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.LinePoint.Deviation">
+            <summary>
+            Gets or sets the deviation.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LinePoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.LinePoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Mesh">
+            <summary>
+            Defect Voxel (Pixel).
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.Mesh.Empty">
+            <summary>
+            An empty mesh with no triangles in it.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Mesh.#ctor(System.Int32[],System.Single[])">
+            <summary>Constructor.</summary>
+            <param name="indices">The mesh indices.</param>
+            <param name="vertices">The mesh vertices in form [x,y,z,x,y,z,...]</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Mesh.Indices">
+            <summary>
+            Gets or sets the indices of the mesh shape.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Mesh.Vertices">
+            <summary>
+            Gets or sets the vertices of the mesh shape.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Mesh.Read(System.IO.BinaryReader)">
+            <summary>
+            Reads a mesh from the specified <paramref name="reader"/>
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Mesh.Write(System.IO.BinaryWriter)">
+            <summary>
+            Writes the voxel to the specified <paramref name="writer"/>.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Mesh.Check(Zeiss.PiWeb.Formplot.FileFormat.Defect)">
+            <summary>
+            Checks the mesh for consistency.
+            </summary>
+            <exception cref="T:System.FormatException">The mesh had inconsistencies</exception>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry">
+            <summary>
+            Geometry for a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.PitchPlot"/>
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry.DeviationType">
+            <summary>
+            Length of the first axis of the plane geometry
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchGeometry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PitchPlot">
+            <summary>
+            Shows deviations of indexed data points, like a bar chart.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint">
+            <summary>
+            Represents a point of a pitch.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint.#ctor(System.Double)">
+            <summary>Constructor.</summary>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <remarks>
+            The position is not stored in the formplot file. Instead, the array index is used.
+            </remarks>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint.Deviation">
+            <value>
+            The deviation.
+            </value>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PitchPoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry">
+            <summary>
+            Represents a plane geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.GeometryType">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.Length1">
+            <summary>
+            Length of the first axis of the plane geometry
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.Length2">
+            <summary>
+            Length of the second axis of the plane geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.Serialize(System.Xml.XmlWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.DeserializeItem(System.Xml.XmlReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlaneGeometry.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint">
+            <summary>
+            Represents a point on a plane.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.#ctor">
+            <inheritdoc/>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.#ctor(System.Double,System.Double,System.Double)">
+            <param name="coordinate1">The coordinate in the first plane axis direction.</param>
+            <param name="coordinate2">The coordinate in the second plane axis direction.</param>
+            <param name="deviation">The deviation.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.Coordinate1">
+            <summary>
+            Gets or sets the coordinate of the first plane axis.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.Coordinate2">
+            <summary>
+            Gets or sets the coordinate of the second plane axis.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.Deviation">
+            <summary>
+            Gets or sets the deviation.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.WriteToStream(System.IO.BinaryWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PlanePoint.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Point`2">
+            <summary>
+            Describes a point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point`2.Segment">
+            <summary>
+            Gets the segment this point belongs to.
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Point">
+            <summary>
+            Describes a point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point.Properties">
+            <summary>
+            Gets the metadata.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point.State">
+            <summary>
+            Gets the current state.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point.Segment">
+            <summary>
+            Gets the segment this point belongs to.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point.Tolerance">
+            <summary>
+            Gets or sets the tolerance of this point.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point.HasTolerance">
+            <summary>
+            Returns <code>true</code> if this point has a tolerance and the tolerance is not empty.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Point.Index">
+            <summary>
+            The point index
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Point.WriteToStream(System.IO.BinaryWriter)">
+            <summary>
+            Writes the point into a binary data stream.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Point.ReadFromStream(System.IO.BinaryReader,System.Version)">
+            <summary>
+            Reads the point from a binary data stream
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2">
+            <summary>
+            A list of points that automatically manages the hierarchy between points and segments.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <summary>Constructor.</summary>
+            <param name="segment">The segment to which this point collection belongs.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Contains(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.CopyTo(`0[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Remove(`0)">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Add(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.IndexOf(`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Insert(System.Int32,`0)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.RemoveAt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Count">
+            <inheritdoc cref="T:System.Collections.Generic.IReadOnlyList`1" />>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PointCollection`2.Item(System.Int32)">
+            <inheritdoc cref="T:System.Collections.Generic.IList`1" />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PointState">
+            <summary>
+            The possible states of a point
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.None">
+            <summary>
+            No state.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.Outlier">
+            <summary>
+            An outlier point.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.Overlap">
+            <summary>
+            A point overlapping another point.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.TiltedForce">
+            <summary>
+            Tagged because of a tilted force.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.TiltedAcceleration">
+            <summary>
+            Tagged because of a tilted acceleration.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.EvaluationRange">
+            <summary>
+            Point lies out of the evaluation range.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.Duplicate">
+            <summary>
+            Point is a duplicate of another point.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.IgnoreGroove1">
+            <summary>
+            Point has been tagged by the controllers groove masking.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.IgnoreGroove2">
+            <summary>
+            Point has been tagged by the controllers groove masking.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.AirScanning">
+            <summary>
+            Der Taster hatte keinen Kontakt zum Material.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.Virtual">
+            <summary>
+            A calculated point.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.Gap">
+            <summary>
+            Point marks the beginning or end of a gap.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.PointState.All">
+            <summary>
+            All states
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.ProjectionAxis">
+            <summary>
+            Possible projections on coordinate axis
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ProjectionAxis.None">
+            <summary>
+            No projection
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ProjectionAxis.X">
+            <summary>
+            Projection on the X axis
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ProjectionAxis.Y">
+            <summary>
+            Projection on the Y axis
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ProjectionAxis.Z">
+            <summary>
+            Projection on the Z axis
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Property">
+            <summary>
+            Class to encapsulate metadata with a name, a datatype and a value
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.#ctor(System.String,Zeiss.PiWeb.Formplot.FileFormat.DataTypeId,System.Object,System.String,System.String)">
+            <summary>Constructor.</summary>
+            <param name="name">The name.</param>
+            <param name="datatype">The datatype.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <param name="unit">The unit.</param>
+            <exception cref="T:System.ArgumentException">name must not be null or empty</exception>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Property.Name">
+            <summary>
+            Gets the culture invariant name.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Property.DataType">
+            <summary>
+            Gets the datatype.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Property.Value">
+            <summary>
+            Gets the value.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Property.Description">
+            <summary>
+            Gets a culture invariant description.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Property.Unit">
+            <summary>
+            Gets the unit of the specified value.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Create(System.String,System.Int64,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance from a <see cref="T:System.Int64"/> value.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <param name="unit">The unit.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Create(System.String,System.Double,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance from a <see cref="T:System.Double"/> value.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <param name="unit">The unit.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Create(System.String,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance from a <see cref="T:System.String"/> value.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Create(System.String,System.DateTime,System.String)">
+            <summary>
+            Creates a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance from a <see cref="T:System.DateTime"/> value.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Create(System.String,System.TimeSpan,System.String)">
+            <summary>
+            Creates a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance from a <see cref="T:System.TimeSpan"/> value.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.TryToDetectTypeAndCreate(System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Property"/> instance from a <see cref="T:System.String"/> value and tries to detect the real datatype.
+            <para><remarks>Order: <see cref="T:System.DateTime"/> -> <see cref="T:System.Int64"/> -> <see cref="T:System.Double"/> -> <see cref="T:System.TimeSpan"/></remarks></para>
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
+            <param name="description">The description.</param>
+            <param name="unit">The unit.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.GetStringValue">
+            <summary>
+            Returns the properties value as string.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Serializes the property.
+            </summary>
+            <param name="writer">The writer.</param>
+            <exception cref="T:System.ArgumentNullException">writer</exception>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Deserialize(System.Xml.XmlReader)">
+            <summary>
+            Deserializes the property data.
+            </summary>
+            <param name="reader">The reader.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">reader</exception>
+            <exception cref="T:System.NotSupportedException"></exception>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Equals(Zeiss.PiWeb.Formplot.FileFormat.Property,Zeiss.PiWeb.Formplot.FileFormat.Property)">
+            <summary>
+            Determines, whether the two specified instances are equal.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Property.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection">
+            <summary>
+            A collection of key-value pairs that can be used to store additional metadata.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Item(System.String)">
+            <summary>
+            Gets the property with the given <c>name</c>. Accessing the property is done efficiently via hash table.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.AddRange(System.Collections.Generic.IEnumerable{Zeiss.PiWeb.Formplot.FileFormat.Property})">
+            <summary>
+            Adds the given properties to this collection.
+            </summary>
+            <param name="properties">Will be added.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Set(Zeiss.PiWeb.Formplot.FileFormat.Property)">
+            <summary>
+            Clears this collection and adds the given property.
+            </summary>
+            <param name="prop">Replaces all other entries.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Set(System.Collections.Generic.IEnumerable{Zeiss.PiWeb.Formplot.FileFormat.Property})">
+            <summary>
+            Cle
+            Clears this collection and adds the given properties.
+            </summary>
+            <param name="prop">Replace all other entries.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Add(Zeiss.PiWeb.Formplot.FileFormat.Property)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Contains(Zeiss.PiWeb.Formplot.FileFormat.Property)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.CopyTo(Zeiss.PiWeb.Formplot.FileFormat.Property[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Count">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.Remove(Zeiss.PiWeb.Formplot.FileFormat.Property)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.PropertyCollection.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Range">
+            <summary>
+            Represents a range of indices.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.#ctor(System.Int32,System.Nullable{System.Int32})">
+            <summary>Constructor.</summary>
+            <param name="start">The starting index.</param>
+            <param name="end">The last index.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Range.Start">
+            <summary>
+            First index inside the range.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Range.End">
+            <summary>
+            Last index inside the range.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.IsValueInRange(System.Int32)">
+            <summary>
+            Determines whether the specified <paramref name="value"/> is inside this range.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.TryParseOrNull(System.String)">
+            <summary>
+            Tries to parse a <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Range"/> instance from a <see cref="T:System.String"/>.
+            <remarks>In case <paramref name="rangeString"/> doesn't define a valid range. an empty <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Range"/> instance is returned.</remarks>
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.Equals(Zeiss.PiWeb.Formplot.FileFormat.Range,Zeiss.PiWeb.Formplot.FileFormat.Range)">
+            <summary>
+            Determines, whether the two specified <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Range"/> instances are equal.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Range.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.RangeList">
+            <summary>
+            Represents a list of ranges
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.RangeList.GetKeysInRange``1(System.Collections.Generic.Dictionary{``0,Zeiss.PiWeb.Formplot.FileFormat.RangeList},System.Int32)">
+            <summary>
+            Enumerates all <paramref name="rangeLists"/> keys whose values contain the <paramref name="value"/>.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.RangeList.TryParseOrEmpty(System.String)">
+            <summary>
+            Tries to parse a new <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.RangeList"/> instance from the <paramref name="rangesString"/>.
+            <remarks>In case <paramref name="rangesString"/> doesn't define a valid range, an empty <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.RangeList"/> instance is returned.</remarks>
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.RangeList.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.RoundnessPlot">
+            <summary>
+            Shows deviations from a nominal circle geometry.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.RoundnessPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Segment`2">
+            <summary>
+            Represents a segment of points.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.#ctor(System.String,Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes)">
+            <summary>Constructor.</summary>
+            <param name="name">The name.</param>
+            <param name="segmentType">Type of the segment.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.Points">
+            <summary>
+            Gets the points
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.Formplot">
+            <summary>
+            The plot to which this segment belongs.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.AbstractFormplot">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.AbstractPoints">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment`2.Equals(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Segment">
+            <summary>
+            Represents a segment of points.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment.#ctor(System.String,Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes)">
+            <summary>Constructor.</summary>
+            <param name="name">The name.</param>
+            <param name="segmentType">Type of the segment.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment.Points">
+            <summary>
+            Gets the points.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment.Formplot">
+            <summary>
+            The plot to which this segment belongs.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment.Name">
+            <summary>
+            Gets the name.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment.SegmentType">
+            <summary>
+            Gets the type.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Segment.Position">
+            <summary>
+            Gets the position of this segment. It's only set when converting from another plot type.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Segment.Equals(Zeiss.PiWeb.Formplot.FileFormat.Segment)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2">
+            <summary>
+            A list of segments that automatically manages the hierarchy between segments and plots.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Formplot{`0,`1})">
+            <summary>Constructor.</summary>
+            <param name="formplot">The formplot to which this collection belongs.</param>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Create(System.String,Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes)">
+            <summary>
+            Creates a segment with the specified <paramref name="name"/> and <paramref name="type"/> and adds it to the collection.
+            </summary>
+            <param name="name">Name.</param>
+            <param name="type">Type.</param>
+            <returns>New instance.</returns>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Clear">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Contains(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.CopyTo(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1}[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Remove(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.IsReadOnly">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Add(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.IndexOf(Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Insert(System.Int32,Zeiss.PiWeb.Formplot.FileFormat.Segment{`0,`1})">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.RemoveAt(System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Count">
+            <inheritdoc cref="T:System.Collections.Generic.IReadOnlyCollection`1" />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.System#Collections#IEnumerable#GetEnumerator">
+            <inheritdoc />
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.SegmentCollection`2.Item(System.Int32)">
+            <inheritdoc cref="T:System.Collections.Generic.IReadOnlyCollection`1" />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes">
+            <summary>
+            Segment types
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.None">
+            <summary>
+            No specific type.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.Circle">
+            <summary>
+            A cylindrical arc or a circle.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.Line">
+            <summary>
+            A linear segment.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.Helix">
+            <summary>
+            A helix segment.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.TouchingPoint">
+            <summary>
+            Touching points.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.MaxGapPoint">
+            <summary>
+            Maximum gap point
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.BendingCircle">
+            <summary>
+            Bending circle
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.Axis">
+            <summary>
+            Axis
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.NominalReferenceProfile">
+            <summary>
+            Flush and gap reference profile (nominal)
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.NominalMeasureProfile">
+            <summary>
+            Flush and gap measure profile (nominal)
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.ActualReferenceProfile">
+            <summary>
+            Flush and gap reference profile (actual)
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.ActualMeasureProfile">
+            <summary>
+            Flush and gap measure profile (actual)
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.NominalProfile">
+            <summary>
+            Nominal profile e.g. Fillet
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.SegmentTypes.ActualProfile">
+            <summary>
+            Actual profile e.g. Fillet
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.StraightnessPlot">
+            <summary>
+            Shows deviations from a straight nominal line.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.StraightnessPlot.#ctor">
+            <summary>Constructor.</summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Tolerance">
+            <summary>
+            Represents a tolerance.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.#ctor(System.Nullable{System.Double},System.Nullable{System.Double})">
+            <summary>Constructor.</summary>
+            <param name="lower">The lower tolerance.</param>
+            <param name="upper">The upper tolerance.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.WarningLevel">
+            <summary>
+            Gets or sets the warning level in share of tolerance level.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Lower">
+            <summary>
+            Gets or sets the lower.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Upper">
+            <summary>
+            Gets or sets the upper.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.ToleranceType">
+            <summary>
+            Gets or sets the type of the tolerance.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.CircularToleranceRadius">
+            <summary>
+            Gets or sets the radius of a circular tolerance.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.RectangleToleranceWidth">
+            <summary>
+            Gets or sets the width of a rectangular tolerance.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.RectangleToleranceHeight">
+            <summary>
+            Gets or sets the height of a rectangular tolerance.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.SpatialTolerance">
+            <summary>
+            Gets or sets the spatial tolerance.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.IsEmpty">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Tolerance"/> instance has a appropriate values or not.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.IsSymmetric">
+            <summary>
+            Gets a value indicating whether this <see cref="T:Zeiss.PiWeb.Formplot.FileFormat.Tolerance"/> instance is symmetric.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Serializes this instance.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Deserialize(System.Xml.XmlReader)">
+            <summary>
+            Deserializes the information from the specified <paramref name="reader"/>.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Equals(Zeiss.PiWeb.Formplot.FileFormat.Tolerance,Zeiss.PiWeb.Formplot.FileFormat.Tolerance)">
+            <summary>
+            Can the given instances be considered equal?
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Tolerance.Equals(Zeiss.PiWeb.Formplot.FileFormat.Tolerance)">
+            <inheritdoc />
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.ToleranceType">
+            <summary>
+            Types of tolerances.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ToleranceType.Default">
+            <summary>
+            Upper and lower tolerance.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ToleranceType.Circular">
+            <summary>
+            Circular tolerance.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ToleranceType.Rectangular">
+            <summary>
+            Rectangular tolerance.
+            </summary>
+        </member>
+        <member name="F:Zeiss.PiWeb.Formplot.FileFormat.ToleranceType.Spatial">
+            <summary>
+            Thee dimensional tolerance.
+            </summary>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Vector">
+            <summary>
+            Representation of a three dimensional vector.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.#ctor(System.Double,System.Double,System.Double)">
+            <summary>Constructor.</summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <param name="z">The z.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Vector.X">
+            <summary>
+            X coordinate.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Vector.Y">
+            <summary>
+            Y coordinate.
+            </summary>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Vector.Z">
+            <summary>
+            Z coordinate.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Serializes this instances information with the specified writer.
+            </summary>
+            <param name="writer">The writer.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.Deserialize(System.Xml.XmlReader)">
+            <summary>
+            Deserializes information from the specified reader.
+            </summary>
+            <param name="reader">The reader.</param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentNullException">reader</exception>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.Equals(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector)">
+            <summary>
+            Determines whether the two specified instances are equal.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Vector.Equals(Zeiss.PiWeb.Formplot.FileFormat.Vector)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="T:Zeiss.PiWeb.Formplot.FileFormat.Voxel">
+            <summary>
+            Describes a cuboid with a position and a size.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Voxel.#ctor(Zeiss.PiWeb.Formplot.FileFormat.Vector,Zeiss.PiWeb.Formplot.FileFormat.Vector)">
+            <summary>Constructor.</summary>
+            <param name="position">The position.</param>
+            <param name="size">The size.</param>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Voxel.Position">
+            <summary>
+            Gets or sets the position.
+            </summary>
+            <value>
+            The position.
+            </value>
+        </member>
+        <member name="P:Zeiss.PiWeb.Formplot.FileFormat.Voxel.Size">
+            <summary>
+            Gets or sets the size.
+            </summary>
+            <value>
+            The size.
+            </value>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Voxel.Read(System.IO.BinaryReader)">
+            <summary>
+            Reads a voxel from the specified <paramref name="reader" />.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Voxel.Write(System.IO.BinaryWriter)">
+            <summary>
+            Writes the voxel to the specified <paramref name="writer" />.
+            </summary>
+        </member>
+        <member name="M:Zeiss.PiWeb.Formplot.FileFormat.Voxel.Check(Zeiss.PiWeb.Formplot.FileFormat.Defect)">
+            <summary>
+            Checks, whether the voxel is completely within the bounds of the <paramref name="defect" />.
+            </summary>
+        </member>
+    </members>
+</doc>
